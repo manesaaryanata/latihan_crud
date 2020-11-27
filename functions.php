@@ -2,7 +2,7 @@
 //Author Robby Takdirillah 2018
 //https://blogbugabagi.blogspot.com/
 //koneksi Database Konfigurasi
-$conn = mysqli_connect("localhost", "root", "", "db_ummi");
+$conn = mysqli_connect("db", "root", "", "db_ummi");
 
 function query($query) {
     global $conn;
@@ -146,7 +146,7 @@ function registrasi($data) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     //tambahkan user baru
-    mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
+    mysqli_query($conn, "INSERT INTO user (username,password) VALUES('$username','$password')");
     return mysqli_affected_rows($conn);
 }
 ?>
